@@ -18,7 +18,7 @@ func TestPresignOpSynthesizeSpeechInput(t *testing.T) {
 		SampleRate   *string
 		Text         *string
 		TextType     types.TextType
-		VoiceId      types.VoiceId
+		VoiceID      types.VoiceId
 		ExpectStream string
 		Error        error
 		ExpectError  bool
@@ -29,7 +29,7 @@ func TestPresignOpSynthesizeSpeechInput(t *testing.T) {
 			SampleRate:   aws.String("128"),
 			Text:         aws.String("Test"),
 			TextType:     types.TextTypeText,
-			VoiceId:      types.VoiceIdAmy,
+			VoiceID:      types.VoiceIdAmy,
 			ExpectStream: "LexiconNames=abc&OutputFormat=mp3&SampleRate=128&Text=Test&TextType=text&VoiceId=Amy",
 		},
 		"Multiple LexiconNames": {
@@ -38,7 +38,7 @@ func TestPresignOpSynthesizeSpeechInput(t *testing.T) {
 			SampleRate:   aws.String("128"),
 			Text:         aws.String("Test"),
 			TextType:     types.TextTypeText,
-			VoiceId:      types.VoiceIdAmy,
+			VoiceID:      types.VoiceIdAmy,
 			ExpectStream: "LexiconNames=abc&LexiconNames=mno&OutputFormat=mp3&SampleRate=128&Text=Test&TextType=text&VoiceId=Amy",
 		},
 		"Text needs parsing": {
@@ -47,7 +47,7 @@ func TestPresignOpSynthesizeSpeechInput(t *testing.T) {
 			SampleRate:   aws.String("128"),
 			Text:         aws.String("Test /Text"),
 			TextType:     types.TextTypeText,
-			VoiceId:      types.VoiceIdAmy,
+			VoiceID:      types.VoiceIdAmy,
 			ExpectStream: "LexiconNames=abc&LexiconNames=mno&OutputFormat=mp3&SampleRate=128&Text=Test+%2FText&TextType=text&VoiceId=Amy",
 		},
 		"Next serializer return error": {
@@ -66,7 +66,7 @@ func TestPresignOpSynthesizeSpeechInput(t *testing.T) {
 				SampleRate:   c.SampleRate,
 				Text:         c.Text,
 				TextType:     c.TextType,
-				VoiceId:      c.VoiceId,
+				VoiceId:      c.VoiceID,
 			}
 
 			m := presignOpSynthesizeSpeechInput{}

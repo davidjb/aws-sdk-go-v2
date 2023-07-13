@@ -10,6 +10,8 @@ import (
 	smithyhttp "github.com/aws/smithy-go/transport/http"
 )
 
+// AddPresignSynthesizeSpeechMiddleware adds presignOpSynthesizeSpeechInput into middleware stack to
+// parse SynthesizeSpeechInput into request stream
 func AddPresignSynthesizeSpeechMiddleware(stack *middleware.Stack) error {
 	return stack.Serialize.Insert(&presignOpSynthesizeSpeechInput{}, "Query:AsGetRequest", middleware.Before)
 }
